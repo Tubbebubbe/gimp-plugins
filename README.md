@@ -19,3 +19,16 @@ Exports images at 50% (144 dpi) and 25% (72 dpi) size
 </table>
 
 Released under the MIT License
+
+Installation
+============
+
+Copy file to plug-in directory and make executable.
+
+* Mac OS X 10.8.3
+* GIMP 2.8.4 from http://gimp.lisanet.de/Website/Download.html
+
+Default directory: ~/Library/Application Support/GIMP/2.8/plug-ins
+
+    > cp export_resized_ios_images.py ~/Library/Application Support/GIMP/2.8/plug-ins
+    > chmod 755 ~/Library/Application Support/GIMP/2.8/plug-ins/export_resized_ios_images.py
