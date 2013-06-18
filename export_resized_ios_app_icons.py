@@ -71,6 +71,7 @@ def plugin_main(img, drawable, dir):
     resize_and_save_image(img, drawable, 57, 72, os.path.join(dir, "Icon.png"), "Icon.png")
     resize_and_save_image(img, drawable, 114, 144, os.path.join(dir, "Icon@2x.png"), "Icon@2x.png")
     resize_and_save_image(img, drawable, 72, 72, os.path.join(dir, "Icon-72.png"), "Icon-72.png")
+    resize_and_save_image(img, drawable, 144, 144, os.path.join(dir, "Icon-72@2x.png"), "Icon-72@2x.png")
     resize_and_save_image(img, drawable, 50, 72, os.path.join(dir, "Icon-Small-50.png"), "Icon-Small-50.png")
     resize_and_save_image(img, drawable, 29, 72, os.path.join(dir, "Icon-Small.png"), "Icon-Small.png")
     resize_and_save_image(img, drawable, 58, 144, os.path.join(dir, "Icon-Small@2x.png"), "Icon-Small@2x.png")
