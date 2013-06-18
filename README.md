@@ -18,6 +18,15 @@ Exports images at 50% (144 dpi) and 25% (72 dpi) size
   </tr>
 </table>
 
+export_resized_ios_app_icons
+----------------------------
+
+Creates all icons you need for your universal iOS app from an
+512 x 512 @ 144 dpi image.
+
+License
+=======
+
 Released under the MIT License
 
 Installation
@@ -30,5 +39,8 @@ Copy file to plug-in directory and make executable.
 
 Default directory: ~/Library/Application Support/GIMP/2.8/plug-ins
 
-    > cp export_resized_ios_images.py ~/Library/Application Support/GIMP/2.8/plug-ins
-    > chmod 755 ~/Library/Application Support/GIMP/2.8/plug-ins/export_resized_ios_images.py
+    > cp export_resized_ios_images.py "~/Library/Application Support/GIMP/2.8/plug-ins"
+    > chmod 755 "~/Library/Application Support/GIMP/2.8/plug-ins/export_resized_ios_images.py"
+    
+    > cp export_resized_ios_app_icons.py "~/Library/Application Support/GIMP/2.8/plug-ins"
+    > chmod 755 "~/Library/Application Support/GIMP/2.8/plug-ins/export_resized_ios_app_icons.py"
