@@ -13,7 +13,12 @@ Tobias Blom <tobias@blom.org>
 
 Installation:
 -------------
-Under Mac OS X, copy this file to ~/Library/GIMP/x.x/plug-ins and
+(Mac OS X)
+Run make:
+
+ > make install
+
+or copy this file to ~/Library/Application Support/GIMP/x.x/plug-ins and
 make it executable (chmod 755)
 
 
@@ -57,8 +62,10 @@ def gprint(text):
     pdb.gimp_message(text)
     return 
 
-def resize_and_save_image(timg, tdrawable, size, dpi, fullpath, filename):
+def resize_and_save_image(timg, tdrawable, size, dpi, dir, filename):
     img = timg.duplicate()
+
+    fullpath = os.path.join(dir, filename)
 
     pdb.gimp_image_merge_visible_layers(img, CLIP_TO_IMAGE)
     pdb.gimp_image_scale(img, size, size)
@@ -66,15 +73,23 @@ def resize_and_save_image(timg, tdrawable, size, dpi, fullpath, filename):
     pdb.file_png_save(img, img.layers[0], fullpath, filename, 0, 9, 1, 1, 1, 1, 1)
 
 def plugin_main(img, drawable, dir):
-    resize_and_save_image(img, drawable, 512, 72, os.path.join(dir, "iTunesArtwork"), "iTunesArtwork")
+    resize_and_save_image(img, drawable, 29, 72, dir, "AppIcon-29x29.png")
+    resize_and_save_image(img, drawable, 29, 72, dir, "AppIcon_Settings-29x29.png")
+    resize_and_save_image(img, drawable, 40, 72, dir, "AppIcon-40x40.png")
+    resize_and_save_image(img, drawable, 50, 72, dir, "AppIcon-50x50.png")
+    resize_and_save_image(img, drawable, 57, 72, dir, "AppIcon-57x57.png")
+    resize_and_save_image(img, drawable, 58, 72, dir, "AppIcon-58x58.png")
+    resize_and_save_image(img, drawable, 58, 72, dir, "AppIcon_Settings-58x58.png")
+    resize_and_save_image(img, drawable, 72, 72, dir, "AppIcon-72x72.png")
+    resize_and_save_image(img, drawable, 76, 72, dir, "AppIcon-76x76.png")
+    resize_and_save_image(img, drawable, 80, 72, dir, "AppIcon-80x80.png")
+    resize_and_save_image(img, drawable, 80, 72, dir, "AppIcon_Spotlight-80x80.png")
+    resize_and_save_image(img, drawable, 100, 72, dir, "AppIcon-100x100.png")
+    resize_and_save_image(img, drawable, 114, 72, dir, "AppIcon-114x114.png")
+    resize_and_save_image(img, drawable, 120, 72, dir, "AppIcon-120x120.png")
+    resize_and_save_image(img, drawable, 152, 72, dir, "AppIcon-152x152.png")
 
-    resize_and_save_image(img, drawable, 57, 72, os.path.join(dir, "Icon.png"), "Icon.png")
-    resize_and_save_image(img, drawable, 114, 144, os.path.join(dir, "Icon@2x.png"), "Icon@2x.png")
-    resize_and_save_image(img, drawable, 72, 72, os.path.join(dir, "Icon-72.png"), "Icon-72.png")
-    resize_and_save_image(img, drawable, 144, 144, os.path.join(dir, "Icon-72@2x.png"), "Icon-72@2x.png")
-    resize_and_save_image(img, drawable, 50, 72, os.path.join(dir, "Icon-Small-50.png"), "Icon-Small-50.png")
-    resize_and_save_image(img, drawable, 29, 72, os.path.join(dir, "Icon-Small.png"), "Icon-Small.png")
-    resize_and_save_image(img, drawable, 58, 144, os.path.join(dir, "Icon-Small@2x.png"), "Icon-Small@2x.png")
+    resize_and_save_image(img, drawable, 512, 72, dir, "iTunesArtwork")
 
     gprint("Images exported to:\n %s" % (dir))
 

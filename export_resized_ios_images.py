@@ -13,7 +13,7 @@ Tobias Blom <tobias@blom.org>
 
 Installation:
 -------------
-Under Mac OS X, copy this file to ~/Library/GIMP/x.x/plug-ins and
+Under Mac OS X, copy this file to ~/Library/Application Support/GIMP/x.x/plug-ins and
 make it executable (chmod 755)
 
 

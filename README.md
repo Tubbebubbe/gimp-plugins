@@ -39,8 +39,8 @@ Copy file to plug-in directory and make executable.
 
 Default directory: ~/Library/Application Support/GIMP/2.8/plug-ins
 
-    > cp export_resized_ios_images.py "~/Library/Application Support/GIMP/2.8/plug-ins"
-    > chmod 755 "~/Library/Application Support/GIMP/2.8/plug-ins/export_resized_ios_images.py"
+    > cp export_resized_ios_images.py ~/Library/Application\ Support/GIMP/2.8/plug-ins
+    > chmod 755 ~/Library/Application\ Support/GIMP/2.8/plug-ins/export_resized_ios_images.py
     
-    > cp export_resized_ios_app_icons.py "~/Library/Application Support/GIMP/2.8/plug-ins"
-    > chmod 755 "~/Library/Application Support/GIMP/2.8/plug-ins/export_resized_ios_app_icons.py"
+    > cp export_resized_ios_app_icons.py ~/Library/Application\ Support/GIMP/2.8/plug-ins
+    > chmod 755 ~/Library/Application\ Support/GIMP/2.8/plug-ins/export_resized_ios_app_icons.py
