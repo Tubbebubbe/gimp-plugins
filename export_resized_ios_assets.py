@@ -69,31 +69,28 @@ def gprint(text):
     pdb.gimp_message(text)
     return 
 
-def resize_and_save_image(timg, tdrawable, size, dpi, dir, filename):
+def resize_and_save_image(timg, tdrawable, scale_factor, dpi, dir, filename):
     img = timg.duplicate()
+    img.merge_visible_layers(0)
 
+    width = timg.width * scale_factor
+    height = timg.height * scale_factor
+    
     fullpath = os.path.join(dir, filename)
 
     pdb.gimp_image_merge_visible_layers(img, CLIP_TO_IMAGE)
-    pdb.gimp_image_scale(img, size, size)
+    pdb.gimp_image_scale(img, width, height)
     pdb.gimp_image_set_resolution(img, dpi, dpi)
     pdb.file_png_save(img, img.layers[0], fullpath, filename, 0, 9, 1, 1, 1, 1, 1)
 
 def plugin_main(img, drawable, dir):
     basename = os.path.basename(img.filename[0:-4])
 
-    filename = basename + ".png"
-    filename2X = basename + "@2x.png"
-    filename3X = basename + "@3x.png"
-    
-    w = drawable.width
+    resize_and_save_image(img, drawable, 0.25, 72,  dir, basename + ".png")
+    resize_and_save_image(img, drawable, 0.5,  144, dir, basename + "@2x.png")
+    resize_and_save_image(img, drawable, 0.75, 144, dir, basename + "@3x.png")
 
-    resize_and_save_image(img, drawable, w * 0.25, 72,  dir, filename)
-    resize_and_save_image(img, drawable, w * 0.5,  144, dir, filename2X)
-    resize_and_save_image(img, drawable, w * 0.75, 144, dir, filename3X)
-
-    gprint("Images exported to\n %s\n as %s (and @2x.png, and @3x.png)" % (dir, filename))
-
+    #gprint("Images exported to\n %s\n as %s (and @2x.png, and @3x.png)" % (dir, filename))
 
 register(
     "export_resized_ios_assets",
