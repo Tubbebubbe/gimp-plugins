@@ -7,4 +7,4 @@ help:
 
 install:
 	$(QUIET)install -v -m 0755 export_resized_ios_app_icons.py $(PLUGINS_DIR) && \
-	install -v -m 0755 export_resized_ios_images.py $(PLUGINS_DIR)
+	install -v -m 0755 export_resized_ios_assets.py $(PLUGINS_DIR)

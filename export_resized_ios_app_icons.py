@@ -8,7 +8,7 @@ Gimp plugin to export app icons for an iOS app
 
 Author:
 -------
-Tobias Blom <tobias@blom.org>
+Tobias Blom, Techne Development AB <tobias.blom@techne-dev.se>
 
 
 Installation:
@@ -24,7 +24,7 @@ make it executable (chmod 755)
 
 Usage:
 ------
-1. Create your image at a resolution of 512 x 512 @ 144 dpi
+1. Create your image at a resolution of 1024 x 1024 @ 144 dpi
 
 2. Run the plug-in (from the File menu) and select the output
    directory.
@@ -33,7 +33,7 @@ License:
 --------
 Released under the MIT License
 
-Copyright (c) 2013 Tobias Blom
+Copyright (c) 2013 Techne Development AB
 
 Permission is hereby granted, free of charge, to any person obtaining
 a copy of this software and associated documentation files (the
@@ -84,10 +84,12 @@ def plugin_main(img, drawable, dir):
     resize_and_save_image(img, drawable, 76, 72, dir, "AppIcon-76x76.png")
     resize_and_save_image(img, drawable, 80, 72, dir, "AppIcon-80x80.png")
     resize_and_save_image(img, drawable, 80, 72, dir, "AppIcon_Spotlight-80x80.png")
+    resize_and_save_image(img, drawable, 87, 72, dir, "AppIcon-87x87.png")
     resize_and_save_image(img, drawable, 100, 72, dir, "AppIcon-100x100.png")
     resize_and_save_image(img, drawable, 114, 72, dir, "AppIcon-114x114.png")
     resize_and_save_image(img, drawable, 120, 72, dir, "AppIcon-120x120.png")
     resize_and_save_image(img, drawable, 152, 72, dir, "AppIcon-152x152.png")
+    resize_and_save_image(img, drawable, 180, 72, dir, "AppIcon-180x180.png")
 
     resize_and_save_image(img, drawable, 512, 72, dir, "iTunesArtwork")
 
@@ -98,10 +100,10 @@ register(
     "export_resized_ios_app_icons",
     "Exports app icons for all iOS platforms",
     "Exports app icons for all iOS platforms",
-    "Tobias Blom",
-    "Copyright (c) 2013 Tobias Blom. Released under MIT License.",
+    "Techne Development AB",
+    "Copyright (c) 2013 Techne Development AB. Released under MIT License.",
     "2013",
-    "<Image>/File/Export iOS app icons...",
+    "<Image>/File/Export iOS App Icons...",
     "RGB*, GRAY*",
     [
         (PF_DIRNAME, "dir", "Output directory", os.path.expanduser("~")),

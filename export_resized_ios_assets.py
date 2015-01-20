@@ -8,7 +8,7 @@ Gimp plugin to export image to icon files usable on iOS.
 
 Author:
 -------
-Tobias Blom <tobias@blom.org>
+Tobias Blom, Techne Development AB <tobias.blom@techne-dev.se>
 
 
 Installation:
@@ -26,9 +26,11 @@ Usage:
    -------------------------------------------------
     80 x 80 @ 144 dpi    |  Icon 20 x 20 @ 72 dpi
                          |  Icon 40 x 40 @ 144 dpi
+                         |  Icon 60 x 60 @ 144 dpi
    -------------------------------------------------
     120 x 120 @ 144 dpi  |  Icon 30 x 30 @ 72 dpi
                          |  Icon 60 x 60 @ 144 dpi
+                         |  Icon 90 x 90 @ 144 dpi
    -------------------------------------------------
 
 2. Run the plug-in (from the File menu) and select the output
@@ -38,7 +40,7 @@ License:
 --------
 Released under the MIT License
 
-Copyright (c) 2013 Tobias Blom
+Copyright (c) 2013 Techne Development AB
 
 Permission is hereby granted, free of charge, to any person obtaining
 a copy of this software and associated documentation files (the
@@ -67,17 +69,13 @@ def gprint(text):
     pdb.gimp_message(text)
     return 
 
-def resize_and_save_image(timg, tdrawable, factor, dpi, fullpath, filename):
-    currentWidth = tdrawable.width
-    currentHeight = tdrawable.height
-
-    newWidth = float(currentWidth) * float(factor) 
-    newHeight = float(currentHeight) * float(factor)
-
+def resize_and_save_image(timg, tdrawable, size, dpi, dir, filename):
     img = timg.duplicate()
 
+    fullpath = os.path.join(dir, filename)
+
     pdb.gimp_image_merge_visible_layers(img, CLIP_TO_IMAGE)
-    pdb.gimp_image_scale(img, newWidth, newHeight)
+    pdb.gimp_image_scale(img, size, size)
     pdb.gimp_image_set_resolution(img, dpi, dpi)
     pdb.file_png_save(img, img.layers[0], fullpath, filename, 0, 9, 1, 1, 1, 1, 1)
 
@@ -85,25 +83,26 @@ def plugin_main(img, drawable, dir):
     basename = os.path.basename(img.filename[0:-4])
 
     filename = basename + ".png"
-    fullpath = os.path.join(dir, filename)
-
-    filename_retina = basename + "@2x.png"
-    fullpath_retina = os.path.join(dir, filename_retina)
+    filename2X = basename + "@2x.png"
+    filename3X = basename + "@3x.png"
     
-    resize_and_save_image(img, drawable, 0.5, 144, fullpath_retina, filename_retina)
-    resize_and_save_image(img, drawable, 0.25, 72, fullpath, filename)
+    w = drawable.width
 
-    gprint("Images exported to:\n %s\n %s" % (fullpath, fullpath_retina))
+    resize_and_save_image(img, drawable, w * 0.25, 72,  dir, filename)
+    resize_and_save_image(img, drawable, w * 0.5,  144, dir, filename2X)
+    resize_and_save_image(img, drawable, w * 0.75, 144, dir, filename3X)
+
+    gprint("Images exported to\n %s\n as %s (and @2x.png, and @3x.png)" % (dir, filename))
 
 
 register(
-    "export_resized_ios_images",
-    "Exports images at 50% (144 dpi) and 25% (72 dpi) size",
-    "Exports images at 50% (144 dpi) and 25% (72 dpi) size",
-    "Tobias Blom",
-    "Copyright (c) 2013 Tobias Blom. Released under MIT License.",
+    "export_resized_ios_assets",
+    "Exports iOS assets at 50% and 75% (144 dpi) and 25% (72 dpi) size",
+    "Exports iOS assets at 50% and 75% (144 dpi) and 25% (72 dpi) size",
+    "Techne Development AB",
+    "Copyright (c) 2013 Techne Development AB. Released under MIT License.",
     "2013",
-    "<Image>/File/Export iOS images...",
+    "<Image>/File/Export as iOS assets...",
     "RGB*, GRAY*",
     [
         (PF_DIRNAME, "dir", "Output directory", os.path.expanduser("~")),
