@@ -89,6 +89,7 @@ def plugin_main(img, drawable, dir):
     resize_and_save_image(img, drawable, 114, 72, dir, "AppIcon-114x114.png")
     resize_and_save_image(img, drawable, 120, 72, dir, "AppIcon-120x120.png")
     resize_and_save_image(img, drawable, 152, 72, dir, "AppIcon-152x152.png")
+    resize_and_save_image(img, drawable, 167, 72, dir, "AppIcon-167x167.png")
     resize_and_save_image(img, drawable, 180, 72, dir, "AppIcon-180x180.png")
 
     resize_and_save_image(img, drawable, 512, 72, dir, "iTunesArtwork")
