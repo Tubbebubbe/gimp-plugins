@@ -73,26 +73,27 @@ def resize_and_save_image(timg, tdrawable, size, dpi, dir, filename):
     pdb.file_png_save(img, img.layers[0], fullpath, filename, 0, 9, 1, 1, 1, 1, 1)
 
 def plugin_main(img, drawable, dir):
+    resize_and_save_image(img, drawable, 20, 72, dir, "AppIcon-20x20.png")
     resize_and_save_image(img, drawable, 29, 72, dir, "AppIcon-29x29.png")
-    resize_and_save_image(img, drawable, 29, 72, dir, "AppIcon_Settings-29x29.png")
     resize_and_save_image(img, drawable, 40, 72, dir, "AppIcon-40x40.png")
     resize_and_save_image(img, drawable, 50, 72, dir, "AppIcon-50x50.png")
     resize_and_save_image(img, drawable, 57, 72, dir, "AppIcon-57x57.png")
     resize_and_save_image(img, drawable, 58, 72, dir, "AppIcon-58x58.png")
-    resize_and_save_image(img, drawable, 58, 72, dir, "AppIcon_Settings-58x58.png")
+    resize_and_save_image(img, drawable, 60, 72, dir, "AppIcon-60x60.png")
     resize_and_save_image(img, drawable, 72, 72, dir, "AppIcon-72x72.png")
     resize_and_save_image(img, drawable, 76, 72, dir, "AppIcon-76x76.png")
     resize_and_save_image(img, drawable, 80, 72, dir, "AppIcon-80x80.png")
-    resize_and_save_image(img, drawable, 80, 72, dir, "AppIcon_Spotlight-80x80.png")
     resize_and_save_image(img, drawable, 87, 72, dir, "AppIcon-87x87.png")
     resize_and_save_image(img, drawable, 100, 72, dir, "AppIcon-100x100.png")
     resize_and_save_image(img, drawable, 114, 72, dir, "AppIcon-114x114.png")
     resize_and_save_image(img, drawable, 120, 72, dir, "AppIcon-120x120.png")
+    resize_and_save_image(img, drawable, 144, 72, dir, "AppIcon-144x144.png")
     resize_and_save_image(img, drawable, 152, 72, dir, "AppIcon-152x152.png")
     resize_and_save_image(img, drawable, 167, 72, dir, "AppIcon-167x167.png")
     resize_and_save_image(img, drawable, 180, 72, dir, "AppIcon-180x180.png")
 
-    resize_and_save_image(img, drawable, 512, 72, dir, "iTunesArtwork")
+    resize_and_save_image(img, drawable, 512, 72, dir, "iTunesArtwork-512x512")
+    resize_and_save_image(img, drawable, 1024, 72, dir, "iTunesArtwork-1024x1024")
 
     gprint("Images exported to:\n %s" % (dir))
 
