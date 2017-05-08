@@ -1,9 +1,9 @@
 #!/usr/bin/env python
 """
 
-export_resized_ios_app_icons
+export_resized_favicons
 
-Gimp plugin to export app icons for an iOS app
+Gimp plugin to export app icons for favicon and Apple touch
 
 
 Author:
@@ -33,7 +33,7 @@ License:
 --------
 Released under the MIT License
 
-Copyright (c) 2013-2017 Techne Development AB
+Copyright (c) 2017 Techne Development AB
 
 Permission is hereby granted, free of charge, to any person obtaining
 a copy of this software and associated documentation files (the
@@ -73,39 +73,24 @@ def resize_and_save_image(timg, tdrawable, size, dpi, dir, filename):
     pdb.file_png_save(img, img.layers[0], fullpath, filename, 0, 9, 1, 1, 1, 1, 1)
 
 def plugin_main(img, drawable, dir):
-    resize_and_save_image(img, drawable, 20, 72, dir, "AppIcon-20x20.png")
-    resize_and_save_image(img, drawable, 29, 72, dir, "AppIcon-29x29.png")
-    resize_and_save_image(img, drawable, 40, 72, dir, "AppIcon-40x40.png")
-    resize_and_save_image(img, drawable, 50, 72, dir, "AppIcon-50x50.png")
-    resize_and_save_image(img, drawable, 57, 72, dir, "AppIcon-57x57.png")
-    resize_and_save_image(img, drawable, 58, 72, dir, "AppIcon-58x58.png")
-    resize_and_save_image(img, drawable, 60, 72, dir, "AppIcon-60x60.png")
-    resize_and_save_image(img, drawable, 72, 72, dir, "AppIcon-72x72.png")
-    resize_and_save_image(img, drawable, 76, 72, dir, "AppIcon-76x76.png")
-    resize_and_save_image(img, drawable, 80, 72, dir, "AppIcon-80x80.png")
-    resize_and_save_image(img, drawable, 87, 72, dir, "AppIcon-87x87.png")
-    resize_and_save_image(img, drawable, 100, 72, dir, "AppIcon-100x100.png")
-    resize_and_save_image(img, drawable, 114, 72, dir, "AppIcon-114x114.png")
-    resize_and_save_image(img, drawable, 120, 72, dir, "AppIcon-120x120.png")
-    resize_and_save_image(img, drawable, 144, 72, dir, "AppIcon-144x144.png")
-    resize_and_save_image(img, drawable, 152, 72, dir, "AppIcon-152x152.png")
-    resize_and_save_image(img, drawable, 167, 72, dir, "AppIcon-167x167.png")
-    resize_and_save_image(img, drawable, 180, 72, dir, "AppIcon-180x180.png")
-
-    resize_and_save_image(img, drawable, 512, 72, dir, "iTunesArtwork-512x512")
-    resize_and_save_image(img, drawable, 1024, 72, dir, "iTunesArtwork-1024x1024")
+    resize_and_save_image(img, drawable, 114, 72, dir, "apple-touch-icon-precomposed.png")
+    resize_and_save_image(img, drawable, 110, 72, dir, "facebook.png")
+    resize_and_save_image(img, drawable, 64,  72, dir, "favicon64.png")
+    resize_and_save_image(img, drawable, 32,  72, dir, "favicon32.png")
+    resize_and_save_image(img, drawable, 24,  72, dir, "favicon24.png")
+    resize_and_save_image(img, drawable, 16,  72, dir, "favicon16.png")
 
     gprint("Images exported to:\n %s" % (dir))
 
 
 register(
-    "export_resized_ios_app_icons",
-    "Exports app icons for all iOS platforms",
-    "Exports app icons for all iOS platforms",
+    "export_resized_fabicons",
+    "Exports icons for favicon",
+    "Exports icons for favicon",
     "Techne Development AB",
-    "Copyright (c) 2013 Techne Development AB. Released under MIT License.",
-    "2013",
-    "<Image>/File/Export iOS App Icons...",
+    "Copyright (c) 2013-2017 Techne Development AB. Released under MIT License.",
+    "2013-2017",
+    "<Image>/File/Export favcons...",
     "RGB*, GRAY*",
     [
         (PF_DIRNAME, "dir", "Output directory", os.path.expanduser("~")),
