@@ -105,7 +105,7 @@ register(
     "Techne Development AB",
     "Copyright (c) 2013 Techne Development AB. Released under MIT License.",
     "2013",
-    "<Image>/File/Export iOS App Icons...",
+    "<Image>/File/Export iOS app icons...",
     "RGB*, GRAY*",
     [
         (PF_DIRNAME, "dir", "Output directory", os.path.expanduser("~")),

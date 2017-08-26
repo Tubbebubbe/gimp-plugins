@@ -1,9 +1,9 @@
 #!/usr/bin/env python
 """
 
-export_resized_android_app_icons
+export_resized_macos_app_icons
 
-Gimp plugin to export app icons for an Android app
+Gimp plugin to export app icons for a macOS app
 
 
 Author:
@@ -73,23 +73,26 @@ def resize_and_save_image(timg, tdrawable, size, dpi, dir, filename):
     pdb.file_png_save(img, img.layers[0], fullpath, filename, 0, 9, 1, 1, 1, 1, 1)
 
 def plugin_main(img, drawable, dir):
-    resize_and_save_image(img, drawable, 192, 72, dir, "ic_launcher-192x192.png")
-    resize_and_save_image(img, drawable, 144, 72, dir, "ic_launcher-144x144.png")
-    resize_and_save_image(img, drawable, 96, 72, dir, "ic_launcher-96x96.png")
-    resize_and_save_image(img, drawable, 72, 72, dir, "ic_launcher-72x72.png")
-    resize_and_save_image(img, drawable, 48, 72, dir, "ic_launcher-48x48.png")
+
+    resize_and_save_image(img, drawable, 16, 72, dir, "AppIcon-16x16.png")
+    resize_and_save_image(img, drawable, 32, 72, dir, "AppIcon-32x32.png")
+    resize_and_save_image(img, drawable, 64, 72, dir, "AppIcon-64x64.png")
+    resize_and_save_image(img, drawable, 128, 72, dir, "AppIcon-128x128.png")
+    resize_and_save_image(img, drawable, 256, 72, dir, "AppIcon-256x256.png")
+    resize_and_save_image(img, drawable, 512, 72, dir, "AppIcon-512x512.png")
+    resize_and_save_image(img, drawable, 1024, 72, dir, "AppIcon-1024x1024.png")
 
     gprint("Images exported to:\n %s" % (dir))
 
 
 register(
-    "export_resized_android_app_icons",
-    "Exports app icons for Android apps",
-    "Exports app icons for Android apps",
+    "export_resized_macos_app_icons",
+    "Exports app icons for macOS",
+    "Exports app icons for macOS",
     "Techne Development AB",
-    "Copyright (c) 2013-2016 Techne Development AB. Released under MIT License.",
-    "2013-2016",
-    "<Image>/File/Export Android app icons...",
+    "Copyright (c) 2013 Techne Development AB. Released under MIT License.",
+    "2013",
+    "<Image>/File/Export macOS app icons...",
     "RGB*, GRAY*",
     [
         (PF_DIRNAME, "dir", "Output directory", os.path.expanduser("~")),

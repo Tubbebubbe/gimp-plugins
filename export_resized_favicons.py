@@ -73,12 +73,16 @@ def resize_and_save_image(timg, tdrawable, size, dpi, dir, filename):
     pdb.file_png_save(img, img.layers[0], fullpath, filename, 0, 9, 1, 1, 1, 1, 1)
 
 def plugin_main(img, drawable, dir):
-    resize_and_save_image(img, drawable, 114, 72, dir, "apple-touch-icon-precomposed.png")
+    resize_and_save_image(img, drawable, 16,  72, dir, "favicon-16x16.png")
+    resize_and_save_image(img, drawable, 32,  72, dir, "favicon-32x32.png")
+    resize_and_save_image(img, drawable, 96,  72, dir, "favicon-96x96.png")
+
+    resize_and_save_image(img, drawable, 120,  72, dir, "apple-touch-icon-120x120.png")
+    resize_and_save_image(img, drawable, 152,  72, dir, "apple-touch-icon-152x152.png")
+    resize_and_save_image(img, drawable, 167,  72, dir, "apple-touch-icon-167x167.png")
+    resize_and_save_image(img, drawable, 180,  72, dir, "apple-touch-icon-180x180.png")
+
     resize_and_save_image(img, drawable, 110, 72, dir, "facebook.png")
-    resize_and_save_image(img, drawable, 64,  72, dir, "favicon64.png")
-    resize_and_save_image(img, drawable, 32,  72, dir, "favicon32.png")
-    resize_and_save_image(img, drawable, 24,  72, dir, "favicon24.png")
-    resize_and_save_image(img, drawable, 16,  72, dir, "favicon16.png")
 
     gprint("Images exported to:\n %s" % (dir))
 
@@ -90,7 +94,7 @@ register(
     "Techne Development AB",
     "Copyright (c) 2013-2017 Techne Development AB. Released under MIT License.",
     "2013-2017",
-    "<Image>/File/Export favcons...",
+    "<Image>/File/Export favicons...",
     "RGB*, GRAY*",
     [
         (PF_DIRNAME, "dir", "Output directory", os.path.expanduser("~")),
