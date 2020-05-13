@@ -62,40 +62,58 @@ def gprint(text):
     pdb.gimp_message(text)
     return 
 
-def resize_and_save_image(timg, tdrawable, size, dpi, dir, filename):
+def resize_and_save_image(timg, tdrawable, size, dpi, directory, filename):
     img = timg.duplicate()
 
-    fullpath = os.path.join(dir, filename)
+    fullpath = os.path.join(directory, filename)
 
     pdb.gimp_image_merge_visible_layers(img, CLIP_TO_IMAGE)
     pdb.gimp_image_scale(img, size, size)
     pdb.gimp_image_set_resolution(img, dpi, dpi)
     pdb.file_png_save(img, img.layers[0], fullpath, filename, 0, 9, 1, 1, 1, 1, 1)
 
-def plugin_main(img, drawable, dir):
-    resize_and_save_image(img, drawable, 20, 72, dir, "AppIcon-20x20.png")
-    resize_and_save_image(img, drawable, 29, 72, dir, "AppIcon-29x29.png")
-    resize_and_save_image(img, drawable, 40, 72, dir, "AppIcon-40x40.png")
-    resize_and_save_image(img, drawable, 50, 72, dir, "AppIcon-50x50.png")
-    resize_and_save_image(img, drawable, 57, 72, dir, "AppIcon-57x57.png")
-    resize_and_save_image(img, drawable, 58, 72, dir, "AppIcon-58x58.png")
-    resize_and_save_image(img, drawable, 60, 72, dir, "AppIcon-60x60.png")
-    resize_and_save_image(img, drawable, 72, 72, dir, "AppIcon-72x72.png")
-    resize_and_save_image(img, drawable, 76, 72, dir, "AppIcon-76x76.png")
-    resize_and_save_image(img, drawable, 80, 72, dir, "AppIcon-80x80.png")
-    resize_and_save_image(img, drawable, 87, 72, dir, "AppIcon-87x87.png")
-    resize_and_save_image(img, drawable, 100, 72, dir, "AppIcon-100x100.png")
-    resize_and_save_image(img, drawable, 114, 72, dir, "AppIcon-114x114.png")
-    resize_and_save_image(img, drawable, 120, 72, dir, "AppIcon-120x120.png")
-    resize_and_save_image(img, drawable, 144, 72, dir, "AppIcon-144x144.png")
-    resize_and_save_image(img, drawable, 152, 72, dir, "AppIcon-152x152.png")
-    resize_and_save_image(img, drawable, 167, 72, dir, "AppIcon-167x167.png")
-    resize_and_save_image(img, drawable, 180, 72, dir, "AppIcon-180x180.png")
+def plugin_main(img, drawable, directory):
+    resize_and_save_image(img, drawable, 1024, 72, directory, "AppStore.png")
 
-    resize_and_save_image(img, drawable, 512, 72, dir, "iTunesArtwork-512x512")
-    resize_and_save_image(img, drawable, 1024, 72, dir, "iTunesArtwork-1024x1024")
+    resize_and_save_image(img, drawable, 20,  72, directory, "Icon-20.png")
+    resize_and_save_image(img, drawable, 40,  72, directory, "Icon-20@2x.png")
+    resize_and_save_image(img, drawable, 60,  72, directory, "Icon-20@3x.png")
 
-    gprint("Images exported to:\n %s" % (dir))
+    resize_and_save_image(img, drawable, 29,  72, directory, "Icon-29.png")
+    resize_and_save_image(img, drawable, 58,  72, directory, "Icon-29@2x.png")
+    resize_and_save_image(img, drawable, 87,  72, directory, "Icon-29@3x.png")
+
+    resize_and_save_image(img, drawable, 40,  72, directory, "Icon-40.png")
+    resize_and_save_image(img, drawable, 80,  72, directory, "Icon-40@2x.png")
+    resize_and_save_image(img, drawable, 120, 72, directory, "Icon-40@3x.png")
+
+    resize_and_save_image(img, drawable, 120, 72, directory, "Icon-60@2x.png")
+    resize_and_save_image(img, drawable, 180, 72, directory, "Icon-60@3x.png")
+
+    resize_and_save_image(img, drawable, 76,  72, directory, "Icon-76.png")
+    resize_and_save_image(img, drawable, 152, 72, directory, "Icon-76@2x.png")
+
+    resize_and_save_image(img, drawable, 167, 72, directory, "Icon-83.5@2x.png")
+
+    resize_and_save_image(img, drawable, 29,  72, directory, "Icon-Small.png")
+    resize_and_save_image(img, drawable, 58,  72, directory, "Icon-Small@2x.png")
+    resize_and_save_image(img, drawable, 87,  72, directory, "Icon-Small@3x.png")
+
+    resize_and_save_image(img, drawable, 40,  72, directory, "Icon-Small-40.png")
+    resize_and_save_image(img, drawable, 80,  72, directory, "Icon-Small-40@2x.png")
+    resize_and_save_image(img, drawable, 120, 72, directory, "Icon-Small-40@3x.png")
+
+    #
+    #  Watch apps
+    #
+    resize_and_save_image(img, drawable, 80,  72, directory, "AppIcon40x40@2x.png")
+    resize_and_save_image(img, drawable, 88,  72, directory, "AppIcon44x44@2x.png")
+    resize_and_save_image(img, drawable, 172, 72, directory, "AppIcon86x86@2x.png")
+    resize_and_save_image(img, drawable, 196, 72, directory, "AppIcon98x98@2x.png")
+    resize_and_save_image(img, drawable, 48,  72, directory, "AppIcon24x24@2x.png")
+    resize_and_save_image(img, drawable, 55,  72, directory, "AppIcon27.5x27.5@2x.png")
+    resize_and_save_image(img, drawable, 58,  72, directory, "AppIcon29x29@2x.png")
+    resize_and_save_image(img, drawable, 87,  72, directory, "AppIcon29x29@3x.png")
 
 
 register(
@@ -103,12 +121,12 @@ register(
     "Exports app icons for all iOS platforms",
     "Exports app icons for all iOS platforms",
     "Techne Development AB",
-    "Copyright (c) 2013 Techne Development AB. Released under MIT License.",
-    "2013",
+    "Copyright (c) 2013-2017 Techne Development AB. Released under MIT License.",
+    "2017",
     "<Image>/File/Export iOS app icons...",
     "RGB*, GRAY*",
     [
-        (PF_DIRNAME, "dir", "Output directory", os.path.expanduser("~")),
+        (PF_DIRNAME, "directory", "Output directory", os.path.expanduser("~")),
         ],
     [],
     plugin_main)

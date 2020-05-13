@@ -69,40 +69,38 @@ def gprint(text):
     pdb.gimp_message(text)
     return 
 
-def resize_and_save_image(timg, tdrawable, scale_factor, dpi, dir, filename):
+def resize_and_save_image(timg, tdrawable, scale_factor, dpi, directory, filename):
     img = timg.duplicate()
     img.merge_visible_layers(0)
 
     width = timg.width * scale_factor
     height = timg.height * scale_factor
     
-    fullpath = os.path.join(dir, filename)
+    fullpath = os.path.join(directory, filename)
 
     pdb.gimp_image_merge_visible_layers(img, CLIP_TO_IMAGE)
     pdb.gimp_image_scale(img, width, height)
     pdb.gimp_image_set_resolution(img, dpi, dpi)
     pdb.file_png_save(img, img.layers[0], fullpath, filename, 0, 9, 1, 1, 1, 1, 1)
 
-def plugin_main(img, drawable, dir):
+def plugin_main(img, drawable, directory):
     basename = os.path.basename(img.filename[0:-4])
 
-    resize_and_save_image(img, drawable, 0.25, 72,  dir, basename + ".png")
-    resize_and_save_image(img, drawable, 0.5,  144, dir, basename + "@2x.png")
-    resize_and_save_image(img, drawable, 0.75, 144, dir, basename + "@3x.png")
-
-    #gprint("Images exported to\n %s\n as %s (and @2x.png, and @3x.png)" % (dir, filename))
+    resize_and_save_image(img, drawable, 0.25, 72,  directory, basename + ".png")
+    resize_and_save_image(img, drawable, 0.5,  144, directory, basename + "@2x.png")
+    resize_and_save_image(img, drawable, 0.75, 144, directory, basename + "@3x.png")
 
 register(
     "export_resized_ios_assets",
     "Exports iOS assets at 50% and 75% (144 dpi) and 25% (72 dpi) size",
     "Exports iOS assets at 50% and 75% (144 dpi) and 25% (72 dpi) size",
     "Techne Development AB",
-    "Copyright (c) 2013 Techne Development AB. Released under MIT License.",
-    "2013",
+    "Copyright (c) 2013-2017 Techne Development AB. Released under MIT License.",
+    "2017",
     "<Image>/File/Export as iOS assets...",
     "RGB*, GRAY*",
     [
-        (PF_DIRNAME, "dir", "Output directory", os.path.expanduser("~")),
+        (PF_DIRNAME, "directory", "Output directory", os.path.expanduser("~")),
         ],
     [],
     plugin_main)
