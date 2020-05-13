@@ -73,49 +73,71 @@ def resize_and_save_image(timg, tdrawable, size, dpi, directory, filename):
     pdb.file_png_save(img, img.layers[0], fullpath, filename, 0, 9, 1, 1, 1, 1, 1)
 
 def plugin_main(img, drawable, directory):
-    resize_and_save_image(img, drawable, 1024, 72, directory, "AppStore.png")
-
-    resize_and_save_image(img, drawable, 20,  72, directory, "Icon-20.png")
-    resize_and_save_image(img, drawable, 40,  72, directory, "Icon-20@2x.png")
-    resize_and_save_image(img, drawable, 60,  72, directory, "Icon-20@3x.png")
-
-    resize_and_save_image(img, drawable, 29,  72, directory, "Icon-29.png")
-    resize_and_save_image(img, drawable, 58,  72, directory, "Icon-29@2x.png")
-    resize_and_save_image(img, drawable, 87,  72, directory, "Icon-29@3x.png")
-
-    resize_and_save_image(img, drawable, 40,  72, directory, "Icon-40.png")
-    resize_and_save_image(img, drawable, 80,  72, directory, "Icon-40@2x.png")
-    resize_and_save_image(img, drawable, 120, 72, directory, "Icon-40@3x.png")
-
-    resize_and_save_image(img, drawable, 120, 72, directory, "Icon-60@2x.png")
-    resize_and_save_image(img, drawable, 180, 72, directory, "Icon-60@3x.png")
-
-    resize_and_save_image(img, drawable, 76,  72, directory, "Icon-76.png")
-    resize_and_save_image(img, drawable, 152, 72, directory, "Icon-76@2x.png")
-
-    resize_and_save_image(img, drawable, 167, 72, directory, "Icon-83.5@2x.png")
-
-    resize_and_save_image(img, drawable, 29,  72, directory, "Icon-Small.png")
-    resize_and_save_image(img, drawable, 58,  72, directory, "Icon-Small@2x.png")
-    resize_and_save_image(img, drawable, 87,  72, directory, "Icon-Small@3x.png")
-
-    resize_and_save_image(img, drawable, 40,  72, directory, "Icon-Small-40.png")
-    resize_and_save_image(img, drawable, 80,  72, directory, "Icon-Small-40@2x.png")
-    resize_and_save_image(img, drawable, 120, 72, directory, "Icon-Small-40@3x.png")
-
     #
-    #  Watch apps
+    # List stolen from [https://stackoverflow.com/a/51343786]. Kudos to
+    # pilgrim-ivanhoe [https://stackoverflow.com/users/2386045/pilgrim-ivanhoe], and
+    # M Jesse [https://stackoverflow.com/users/1025019/m-jesse].
     #
-    resize_and_save_image(img, drawable, 80,  72, directory, "AppIcon40x40@2x.png")
-    resize_and_save_image(img, drawable, 88,  72, directory, "AppIcon44x44@2x.png")
-    resize_and_save_image(img, drawable, 172, 72, directory, "AppIcon86x86@2x.png")
-    resize_and_save_image(img, drawable, 196, 72, directory, "AppIcon98x98@2x.png")
-    resize_and_save_image(img, drawable, 48,  72, directory, "AppIcon24x24@2x.png")
-    resize_and_save_image(img, drawable, 55,  72, directory, "AppIcon27.5x27.5@2x.png")
-    resize_and_save_image(img, drawable, 58,  72, directory, "AppIcon29x29@2x.png")
-    resize_and_save_image(img, drawable, 87,  72, directory, "AppIcon29x29@3x.png")
+
+    # // App Icons
+    # app-icon@2x.png // iPhone | 60pt x 60pt | actual size: 120px x 120px
+    resize_and_save_image(img, drawable, 120, 72, directory, "app-icon@2x.png")
+    # app-icon@3x.png // iPhone | 60pt x 60pt | actual size: 180px x 180px
+    resize_and_save_image(img, drawable, 180, 72, directory, "app-icon@3x.png")
+    # app-icon~ipad.png // iPad | 76pt x 76pt | actual size: 76px x 76px
+    resize_and_save_image(img, drawable, 76, 72, directory, "app-icon~ipad.png")
+    # app-icon@2x~ipad.png // iPad | 76pt x 76pt | actual size: 152px x 152px
+    resize_and_save_image(img, drawable, 152, 72, directory, "app-icon@2x~ipad.png")
+    # app-icon-83.5@2x~ipad.png // iPad Pro | 83.5pt x 83.5pt | actual size: 167px x 167px 
+    resize_and_save_image(img, drawable, 167, 72, directory, "app-icon-83.5@2x~ipad.png")
+     
+    # // Notification Icons
+    # app-icon-20~ipad.png // iPad | 20pt x 20pt | actual size: 20px x 20px 
+    resize_and_save_image(img, drawable, 20, 72, directory, "app-icon-20~ipad.png")
+    # app-icon-20@2x~ipad.png // iPad | 20pt x 20pt | actual size: 40px x 40px 
+    resize_and_save_image(img, drawable, 40, 72, directory, "app-icon-20@2x~ipad.png")
+    # app-icon-20@2x.png // iPhone | 20pt x 20pt | actual size: 40px x 40px 
+    resize_and_save_image(img, drawable, 40, 72, directory, "app-icon-20@2x.png")
+    # app-icon-20@3x.png // iPhone | 20pt x 20pt | actual size: 60px x 60px 
+    resize_and_save_image(img, drawable, 60, 72, directory, "app-icon-20@3x.png")
+     
+    # // Settings Icons
+    # app-icon-29.png // iPhone | 29pt x 29pt | actual size: 29px x 29px     
+    resize_and_save_image(img, drawable, 29, 72, directory, "app-icon-29.png")
+    # app-icon-29~ipad.png // iPad | 29pt x 29pt | actual size: 29px x 29px 
+    resize_and_save_image(img, drawable, 29, 72, directory, "app-icon-29~ipad.png")
+    # app-icon-29@2x~ipad.png // iPad | 29pt x 29pt | actual size: 58px x 58px
+    resize_and_save_image(img, drawable, 58, 72, directory, "app-icon-29@2x~ipad.png")
+    # app-icon-29@2x.png // iPhone | 29pt x 29pt | actual size: 58px x 58px
+    resize_and_save_image(img, drawable, 58, 72, directory, "app-icon-29@2x.png")
+    # app-icon-29@3x.png // iPhone | 29pt x 29pt | actual size: 87px x 87px
+    resize_and_save_image(img, drawable, 87, 72, directory, "app-icon-29@3x.png")
+     
+    # // Spotlight Icons
+    # app-icon-40~ipad.png // iPad | 40pt x 40pt | actual size: 40px x 40px 
+    resize_and_save_image(img, drawable, 40, 72, directory, "app-icon-40~ipad.png")
+    # app-icon-40@2x~ipad.png // iPad | 40pt x 40pt | actual size: 80px x 80px 
+    resize_and_save_image(img, drawable, 80, 72, directory, "app-icon-40@2x~ipad.png")
+    # app-icon-40@2x.png // iPhone | 40pt x 40pt | actual size: 80px x 80px 
+    resize_and_save_image(img, drawable, 80, 72, directory, "app-icon-40@2x.png")
+    # app-icon-40@3x.png // iPhone | 40pt x 40pt | actual size: 120px x 120px 
+    resize_and_save_image(img, drawable, 120, 72, directory, "app-icon-40@3x.png")
+     
+    # // App Store
+    # app-icon~ios-marketing.png // 1024pt x 1024pt | actual size: 1024px x 1024px 
+    resize_and_save_image(img, drawable, 1024, 72, directory, "app-icon~ios-marketing.png")
 
 
+    # // CarPlay
+    # app-icon@2x~car.png // 60pt x 60pt | actual size: 120px x 120px
+    resize_and_save_image(img, drawable, 120, 72, directory, "app-icon@2x~car.png")
+    # app-icon@3x~car.png // 60pt x 60pt | actual size: 180px x 180px
+    resize_and_save_image(img, drawable, 180, 72, directory, "app-icon@3x~car.png")
+     
+    # // Apple Watch
+    # app_icon~watch-marketing.png // 1024pt x 1024pt | actual size: 1024px x 1024px
+    resize_and_save_image(img, drawable, 1024, 72, directory, "app_icon~watch-marketing.png")
+ 
 register(
     "export_resized_ios_app_icons",
     "Exports app icons for all iOS platforms",
